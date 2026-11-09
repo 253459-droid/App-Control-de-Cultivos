@@ -1,4 +1,20 @@
 {
-  "users": [],
-  "parcelas": []
+  "users": [
+    {
+      "nombre": "russell Gutiérrez ",
+      "email": "russellgutierrez498@gmail.com",
+      "contrasena": "russell07 ",
+      "id": 1
+    }
+  ],
+  "parcelas": [
+    {
+      "nombre": "parcela 2",
+      "cultivo": "maiz",
+      "hectareas": 3,
+      "fechaSiembra": "10 de diciembre ",
+      "tieneRiego": false,
+      "id": 1
+    }
+  ]
 }
