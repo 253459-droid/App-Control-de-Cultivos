@@ -12,6 +12,6 @@ interface AuthApiService {
     @POST("users")
     suspend fun register(@Body request: RegisterRequest): Response<AuthResponse>
 
-    @POST("login")
+    @POST("users")
     suspend fun login(@Body request: LoginRequest): Response<AuthResponse>
 }

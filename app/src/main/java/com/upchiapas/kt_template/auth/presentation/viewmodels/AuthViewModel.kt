@@ -66,6 +66,13 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
         }
     }
 
+    fun cerrarSesion() {
+        viewModelScope.launch {
+            authRepository.logout()
+            _uiState.value = AuthUiState.Idle
+        }
+    }
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {

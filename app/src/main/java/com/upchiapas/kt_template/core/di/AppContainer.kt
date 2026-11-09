@@ -33,7 +33,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
             .build()
     }
 
-    private val baseUrl = "http://192.168.1.87:3000/"
+    private val baseUrl = "https://api-parcela.onrender.com/"
 
     private val retrofit: Retrofit by lazy {
         val json = Json { ignoreUnknownKeys = true }

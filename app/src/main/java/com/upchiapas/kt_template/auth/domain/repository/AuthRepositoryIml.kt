@@ -46,4 +46,7 @@ class AuthRepositoryImpl(
             Result.failure(e)
         }
     }
+    override suspend fun logout() {
+        sessionManager.clearSession()
+    }
 }

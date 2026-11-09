@@ -50,16 +50,13 @@ fun AppNavigation(startDestination: String) {
             )
         }
 
-        composable("home") {
+        composable(route = "home") {
             CultivosScreen(
                 viewModel = cultivosViewModel,
                 onLogout = {
-                    val appContainer = (context.applicationContext as KtApplication).container
-                    appContainer.sessionManager.clearSession()
-
+                    authViewModel.cerrarSesion()
                     navController.navigate("login") {
-                        popUpTo("home") { inclusive = true }
-                    }
+                        popUpTo(0)            }
                 }
             )
         }

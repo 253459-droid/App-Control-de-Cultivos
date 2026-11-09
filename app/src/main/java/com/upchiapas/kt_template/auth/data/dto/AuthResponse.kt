@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AuthResponse(
-    val token: String = "token_de_prueba"
+    val token: String
 )
