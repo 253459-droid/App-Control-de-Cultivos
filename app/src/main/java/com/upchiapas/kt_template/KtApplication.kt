@@ -1,10 +1,15 @@
 package com.upchiapas.kt_template
 
 import android.app.Application
-import com.upchiapas.kt_template.jsonplaceholder.di.JsonPlaceholderModule
-import com.upchiapas.kt_template.quiz.di.QuizModule
+import com.upchiapas.kt_template.core.di.AppContainer
+import com.upchiapas.kt_template.core.di.DefaultAppContainer
 
 class KtApplication : Application() {
-    val quizModule: QuizModule by lazy { QuizModule() }
-    val jsonPlaceholderModule: JsonPlaceholderModule by lazy { JsonPlaceholderModule() }
+
+    lateinit var container: AppContainer
+
+    override fun onCreate() {
+        super.onCreate()
+        container = DefaultAppContainer(this)
+    }
 }

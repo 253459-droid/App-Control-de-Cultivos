@@ -1,4 +1,36 @@
 package com.upchiapas.kt_template.core.di
 
-class AppContainer {
+import android.content.Context
+import com.upchiapas.kt_template.core.session.SessionManager
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
+
+interface AppContainer {
+    val sessionManager: SessionManager
+}
+
+class DefaultAppContainer(private val context: Context) : AppContainer {
+
+    override val sessionManager: SessionManager by lazy {
+        SessionManager(context)
+    }
+
+    private val okHttpClient: OkHttpClient by lazy {
+        OkHttpClient.Builder()
+            .build()
+    }
+
+    private val baseUrl = "http://10.0.2.2:3000/"
+
+    private val retrofit: Retrofit by lazy {
+        val json = Json { ignoreUnknownKeys = true }
+        Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(okHttpClient)
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .build()
+    }
 }
